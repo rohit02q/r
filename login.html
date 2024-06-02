@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+   <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   *{
+    margin:0;
+    padding:0;
+  }
+  #form{
+    width:300px;
+    hieght:600px;
+    background-color:white;
+    margin-top:100px;
+    margin-left:40px;
+    border-radius:5px
+  }
+  h1{
+    text-align: center;
+    color:rgba(255,112,27,1);
+    text-decoration: purple underline;
+    font-size:;
+  }
+input{
+  margin-left: 15px;
+  height: 35px;
+  padding: 3px;
+  border:1px solid purple;
+  border-radius:3px;
+}
+#un{
+  margin-top: 40px;
+}
+#ps{
+  margin-top: 15px;
+}
+button{
+  margin-left: 15px;
+  margin-top: 20px;
+  margin-bottom:20px;
+  height: 35px;
+  width:65px;
+  padding: 3px;
+  background-color:rgba(255,112,27,0.8);
+  border: none;
+  border-radius:6px;
+  color:white;
+}
+#p1,#p2,#p3,#p5{
+  color:red;
+  margin-left: 10px;
+  margin-top: 3px;
+  padding-bottom:4px;
+}
+  #p4{
+    margin-left:15px;
+    margin-bottom:3px;
+  }
+  #sum{
+    margin-left: 15px;
+  height: 35px;
+  padding: 3px;
+  border:1px solid purple;
+  border-radius:3px;
+    width:45px;
+  }
+  </style>
+  
+</head>
+<body bgcolor="rgba(255,136,17,0.6")>
+  <div id="form">
+    <h1>Login</h1>
+    <input id="un" placeholder="Enter username">
+    <p id="p1"></p>
+    <input id="ps" placeholder="Enter password" type="password">
+     <p id="p2"></p>
+     <p id="p3"></p>
+    <p4 id="p4"></p4>
+    <input id="sum" type="number">   
+    <br>
+    <p4 id="p5"></p4>
+    <br>
+      <button onclick="login();">Login</button>
+    <button onclick="window.location.reload();">Refresh</button>
+    
+  </div>
+  <script>
+ var  a = Math.floor(Math.random() * 20) + 1;
+   var  b = Math.floor(Math.random() * 15) + 1;
+    
+   document.getElementById('p4').innerText =`${a} + ${b} =`;
+
+  function login() {
+    var  sum = document.getElementById("sum").value;
+   var s= a+ b;
+    let un= document.getElementById("un").value;
+  un2= un.toUpperCase();
+  un3= un2.trim();
+  length = un3.length;
+let ps = "@" +un3[0]+un3[1]+un3[2]+"0"+length;
+
+  pass = document.getElementById("ps").value;
+    
+   if (un.length==0){
+        document.getElementById('p1').innerText ="*Enter username";
+     document.getElementById('p2').innerText ="";
+     document.getElementById('p3').innerText ="";
+    } 
+ else if (pass==ps && sum==s){
+    alert("Login succesfully");
+   document.getElementById('p2').innerText ="";
+      document.getElementById('p1').innerText ="";
+     document.getElementById('p3').innerText ="";
+ document.getElementById('p5').innerText ="";
+ 
+    }
+    else if(pass==0){
+       document.getElementById('p2').innerText ="*Enter password ";
+      document.getElementById('p1').innerText ="";
+     document.getElementById('p3').innerText ="";
+ 
+    }
+    else if(pass!= ps){
+         document.getElementById('p3').innerText ="*invalid password ";
+    document.getElementById('p2').innerText ="";
+     document.getElementById('p1').innerText ="";
+    }
+    else if(pass==ps && sum.length==0){
+      document.getElementById('p5').innerText ="*Enter sum";
+    document.getElementById('p2').innerText ="";
+     document.getElementById('p1').innerText ="";
+     document.getElementById('p3').innerText ="";
+   
+    }
+    else if(pass==ps && sum!=s){
+            document.getElementById('p5').innerText ="*Worng";
+    document.getElementById('p2').innerText ="";
+     document.getElementById('p1').innerText ="";
+     document.getElementById('p3').innerText ="";
+   
+    }
+
+  }
+      
+
+
+  </script>
+</body>
+</html>

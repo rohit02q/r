@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Math tool</title>
+  <style>
+  body{
+  align-content: center;
+  justify-content: center;
+    hieght:110%
+  }
+    h1{
+      color:red;
+      text-align:center;
+      font-size:25px;
+      margin-top:3px;
+  }
+  #d1{
+    background-color:skyblue;
+    height:190px;
+    width:340px;
+    margin-left:10px;
+    margin-top:30px;
+    
+  }
+  input{
+    border-color:red;
+    text-align:center;
+    height:40px;
+    font-size:13px;
+    width:150px;
+    border-radius:3px;
+    
+  }
+  #a{
+    margin-left:15px;
+    margin-top:30px;
+  }
+  #b{
+    margin-left:15px;
+    margin-top:10px;
+  }
+  button{
+    margin-top:10px;
+    margin-left:15px;
+    border:none;
+    background-color:rgba(255,0,0,0.7);
+    color:white;
+    height:40px;
+    width:100px;
+    border-radius:7px;
+  }
+  #d2{
+     background-color:;
+    height:190px;
+    width:340px;
+    margin-left:10px;
+    margin-top:30px;
+  }
+  p{
+        margin-left:15px;
+    font-size:18px;
+  }
+  
+  </style>
+ 
+
+
+</head>
+
+<body>
+   <h1>Euclid Divsion Algorithm</h1>
+   <div id="d1">
+    
+   <input id="a" type="number" maxlength="8" placeholder="Enter a number">
+   <button onclick="edl()">Result</button>
+   <input id="b" type="number" maxlength="8" placeholder="Enter a number"> 
+   <button onclick="window.location.reload()">Refresh</button>
+   </div>
+   <div id="d2">
+    <p id="p1" style="color:blue"   ></p>
+    <p id="p2" style="color:green"  ></p>
+    <p id="p"style="color:purple"   ></p>
+    <p id="p3"style="color:red"     ></p>
+    <p id="pn1"style="color:purple" ></p>
+    <p id="pn2"style="color:purple" ></p>
+    <p id="pn3"style="color:purple" ></p>
+    <p id="pn4"style="color:purple" ></p>
+    <p id="pn5"style="color:purple" ></p>
+    <p id="pn6"style="color:purple" ></p>
+    <p id="pn7"style="color:purple" ></p>
+    <p id="pn8"style="color:purple" ></p>
+    <p id="pn9"style="color:purple" ></p>
+    <p id="pn10"style="color:purple" ></p>
+    
+   </div>
+  
+
+
+  <script>
+    function edl(){
+   var a =document.getElementById("a").value;
+   var b =document.getElementById("b").value;
+   var rem = a%b ;
+   var qu= (a-rem)/b;
+      if(a>-1 && b>0){
+      
+      document.getElementById('p1').innerText = 'By Euclid Division Algorithm';
+      document.getElementById('p2').innerText = 'a = b × q + r';
+      
+    document.getElementById('p').innerText = 
+   `${a}=${b}×${qu}+${rem}`;
+         document.getElementById('p3').innerText = "";
+   
+      }
+      else if( b === "0"){
+        document.getElementById('p3').innerText = "undefinded!";
+                    document.getElementById('p1').innerText = '';
+      document.getElementById('p2').innerText = '';
+      
+    document.getElementById('p').innerText ="";
+  
+   
+      }
+  else{
+      document.getElementById('p3').innerText = "You didn't enter a number!";
+            document.getElementById('p1').innerText = '';
+      document.getElementById('p2').innerText = '';
+      
+    document.getElementById('p').innerText ="";
+  }      
+      c=b;
+  a=c;
+   b=rem;
+  let r1=a%b
+ if(rem>0){
+       
+  var qu= (a-r1)/b;
+  document.getElementById('pn1').innerText = 
+   `${a}=${b}×${qu}+${r1}`;
+ } 
+else if(rem==0){
+  document.getElementById('pn1').innerText =`HCF is ${c}`;
+}
+
+
+   c=b;
+   a=c;
+   b=r1;
+  let r2=a%b
+ if(r1>0){
+       
+  var qu= (a-r2)/b;
+  document.getElementById('pn2').innerText = 
+   `${a}=${b}×${qu}+${r2}`;
+ } 
+else if(r1==0){
+  document.getElementById('pn2').innerText =`HCF is ${c}`;
+}
+             c=b;
+   a=c;
+   b=r2;
+  let r3=a%b
+ if(r2>0){
+       
+  var qu= (a-r3)/b;
+  document.getElementById('pn3').innerText = 
+   `${a}=${b}×${qu}+${r3}`;
+ } 
+else if(r2==0){
+  document.getElementById('pn3').innerText =`HCF is ${c}`;
+}
+                c=b;
+   a=c;
+   b=r3;
+  let r4=a%b
+ if(r3>0){
+       
+  var qu= (a-r4)/b;
+  document.getElementById('pn4').innerText = 
+   `${a}=${b}×${qu}+${r4}`;
+ } 
+else if(r3==0){
+  document.getElementById('pn4').innerText =`HCF is ${c}`;
+}
+                      c=b;
+   a=c;
+   b=r4;
+  let r5=a%b
+ if(r4>0){
+       
+  var qu= (a-r5)/b;
+  document.getElementById('pn5').innerText = 
+   `${a}=${b}×${qu}+${r5}`;
+ } 
+else if(r4==0){
+  document.getElementById('pn5').innerText =`HCF is ${c}`;
+}
+                           c=b;
+   a=c;
+   b=r5;
+  let r6=a%b
+ if(r5>0){
+       
+  var qu= (a-r6)/b;
+  document.getElementById('pn6').innerText = 
+   `${a}=${b}×${qu}+${r6}`;
+ } 
+else if(r5==0){
+  document.getElementById('pn6').innerText =`HCF is ${c}`;
+}
+                                 c=b;
+   a=c;
+   b=r6;
+  let r7=a%b
+ if(r6>0){
+       
+  var qu= (a-r7)/b;
+  document.getElementById('pn7').innerText = 
+   `${a}=${b}×${qu}+${r7}`;
+ } 
+else if(r6==0){
+  document.getElementById('pn7').innerText =`HCF is ${c}`;
+}
+                                    c=b;
+   a=c;
+   b=r7;
+  let r8=a%b
+ if(r7>0){
+       
+  var qu= (a-r8)/b;
+  document.getElementById('pn8').innerText = 
+   `${a}=${b}×${qu}+${r8}`;
+ } 
+else if(r7==0){
+  document.getElementById('pn8').innerText =`HCF is ${c}`;
+}
+
+                                         c=b;
+   a=c;
+   b=r8;
+  let r9=a%b
+ if(r8>0){
+       
+  var qu= (a-r9)/b;
+  document.getElementById('pn9').innerText = 
+   `${a}=${b}×${qu}+${r9}`;
+ } 
+else if(r8==0){
+  document.getElementById('pn9').innerText =`HCF is ${c}`;
+}
+                                        c=b;
+   a=c;
+   b=r9;
+  let r10=a%b
+ if(r9>0){
+       
+  var qu= (a-r10)/b;
+  document.getElementById('pn10').innerText = 
+   `${a}=${b}×${qu}+${r10}`;
+ } 
+else if(r9==0){
+  document.getElementById('pn10').innerText =`HCF is ${c}`;
+}
+
+    }
+  </script>
+ 
+
+</body>
+</html>
+
+
+
+
+
