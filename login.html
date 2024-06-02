@@ -14,13 +14,21 @@
     margin:0;
     padding:0;
   }
+  body{
+    display:flex;
+    justify-content:center;
+    align-items: center;    
+  
+  }
   #form{
     width:300px;
     hieght:600px;
     background-color:white;
-    margin-top:100px;
-    margin-left:40px;
-    border-radius:5px
+    margin-top:150px;
+    margin-left:0px;
+    border-radius:5px;
+    
+  
   }
   h1{
     text-align: center;
@@ -71,6 +79,10 @@ button{
   border-radius:3px;
     width:45px;
   }
+  #hint{
+    margin-left:15px;
+    color:grey;
+  }
   </style>
   
 </head>
@@ -82,12 +94,14 @@ button{
     <input id="ps" placeholder="Enter password" type="password">
      <p id="p2"></p>
      <p id="p3"></p>
+    <p id="hint"onclick="phi();">forgot password?</p>
+   
     <p4 id="p4"></p4>
     <input id="sum" type="number">   
     <br>
     <p4 id="p5"></p4>
     <br>
-      <button onclick="login();">Login</button>
+       <button onclick="login();">Login</button>
     <button onclick="window.location.reload();">Refresh</button>
     
   </div>
@@ -148,9 +162,17 @@ let ps = "@" +un3[0]+un3[1]+un3[2]+"0"+length;
     }
 
   }
-      
-
+      function phi(){
+      hint =   confirm("Do you want to know password?");
+       if(hint){ 
+         alert("password is ---> @ + First three letter of username in uppercase + 0 + number of letters in username For example-- username(rohit) password(@ROH05) And username(goat) password(@GOA04");
+      }
+        else{
+          
+        }
+      }
 
   </script>
 </body>
 </html>
+
