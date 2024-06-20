@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hacker Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        h1 {
+            color: Green
+         ;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            margin-top:4px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        #backToTopBtn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #backToTopBtn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+    
+    <div class="container">
+        <h1>Zig Zag Text</h1>
+        <label for="thing">Enter Thing:</label>
+        <input type="text" id="thing">
+        <label for="term">Enter Term:</label>
+        <input type="number" id="term">
+        <div class="buttons">
+            <button onclick="processInputs()">Generate Zig Zag Text</button>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+        <pre id="output"></pre>
+    </div>
+
+    <div class="container">
+        <h1>Pyramid Text</h1>
+        <label for="pyramidThing">Enter Thing:</label>
+        <input type="text" id="pyramidThing">
+        <label for="pyramidTerm">Enter Term:</label>
+        <input type="number" id="pyramidTerm">
+        <div class="buttons">
+            <button onclick="generatePyramidText()">Generate Pyramid Text</button>
+            <button onclick="copyPyramidToClipboard()">Copy to Clipboard</button>
+        </div>
+        <pre id="pyramidOutput"></pre>
+    </div>
+    
+    <div class="container">
+        <h1>One Line Text</h1>
+        <label for="oneLineThing">Enter Thing:</label>
+        <input type="text" id="oneLineThing">
+        <label for="oneLineTerm">Enter Term:</label>
+        <input type="number" id="oneLineTerm">
+        <div class="buttons">
+            <button onclick="generateOneLineText()">Generate One Line Text</button>
+            <button onclick="copyOneLineToClipboard()">Copy to Clipboard</button>
+        </div>
+        <pre id="oneLineOutput"></pre>
+    </div>
+
+    <script>
+        function processInputs() {
+            var n = document.getElementById('thing').value;
+            let t = document.getElementById('term').value;
+            let n1 = n;
+            let output = '';
+
+            for (let i = 0; i < t; i++) {
+                for (let k = 0; k < 19; k++) {
+                    output += n + '\n';
+                    n = "   " + n;
+                }
+                n = " " + n1;
+            }
+
+            document.getElementById('output').innerText = output;
+        }
+
+        function copyToClipboard() {
+            let output = document.getElementById('output').innerText;
+            navigator.clipboard.writeText(output).then(() => {
+                alert('Output copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function generatePyramidText() {
+            var n = document.getElementById('pyramidThing').value;
+            let t = document.getElementById('pyramidTerm').value;
+            let n1 = n;
+            let output = '';
+
+            for (let i = 0; i < t; i++) {
+                output += n + '\n';
+                n = n + "," + n1;
+            }
+
+            document.getElementById('pyramidOutput').innerText = output;
+        }
+
+        function copyPyramidToClipboard() {
+            let output = document.getElementById('pyramidOutput').innerText;
+            navigator.clipboard.writeText(output).then(() => {
+                alert('Pyramid output copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function generateOneLineText() {
+            var n = document.getElementById('oneLineThing').value;
+            let t = document.getElementById('oneLineTerm').value;
+            let output = '';
+
+            for (let i = 0; i < t; i++) {
+                output += n + ' ';
+            }
+
+            document.getElementById('oneLineOutput').innerText = output;
+        }
+
+        function copyOneLineToClipboard() {
+            let output = document.getElementById('oneLineOutput').innerText;
+            navigator.clipboard.writeText(output).then(() => {
+                alert('One Line Text copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
