@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>Jarvis</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #66fcf1;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1f2833;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .container img {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .container button {
+            background-color: #66fcf1;
+            color: #0b0c10;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button:hover {
+            background-color: #45a29e;
+        }
+
+        .logo {
+            margin-top: 20px;
+            width: 150px;
+        }
+    </style>
+    <script>
+        // Speech Synthesis Function
+        function speaker(text) {
+            const message = new SpeechSynthesisUtterance(text);
+            message.lang = 'hi-IN';
+            message.pitch = 1;
+            message.rate = 1;
+            window.speechSynthesis.speak(message);
+        }
+
+        // Greeting Function
+        function greetUser() {
+            speaker("Hello, sir!");
+
+            const now = new Date();
+            const hours = now.getHours();
+            let greeting;
+
+            if (hours >= 0 && hours < 12) {
+                greeting = "Good Morning";
+            } else if (hours >= 12 && hours < 17) {
+                greeting = "Good Afternoon";
+            } else {
+                greeting = "Good Evening";
+            }
+
+            speaker(greeting + ", how can I assist you today?");
+        }
+
+        // Speech Recognition Function
+        function initSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("Your browser does not support Speech Recognition. Please use Google Chrome.");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-IN';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = function() {
+                speaker("What can I do for you?");
+            };
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+                console.log("User said:", transcript);
+
+                // Casual conversation phrases and responses
+                const casualResponses = {
+                    "what is your name": "My name is Jarvis.",
+                    "how are you": "I'm here to assist you. How can I help?",
+                    "hello": "Hello! How can I assist you?",
+                    "who created you": "I was created by a developer who wanted a smart assistant.",
+                    "thank you": "You're welcome!",
+                    "goodbye": "Goodbye! Have a nice day!"
+                };
+
+                // Check if the transcript matches any casual phrase
+                for (let phrase in casualResponses) {
+                    if (transcript.includes(phrase)) {
+                        speaker(casualResponses[phrase]);
+                        return;
+                    }
+                }
+
+                // Search-related keywords and general commands
+                const searchKeywords = ['search', 'find', 'look for', 'who is', 'what is', 'how to', 'tell me about'];
+                const openKeywords = ['open', 'launch', 'go to', 'start'];
+                let matched = false;
+
+                // Handle search queries
+                for (let keyword of searchKeywords) {
+                    if (transcript.includes(keyword)) {
+                        let searchQuery = transcript.split(keyword)[1] || '';
+                        searchQuery = searchQuery.trim();
+                        if (searchQuery) {
+                            speaker("Searching for " + searchQuery);
+                            window.open('https://www.google.com/search?q=' + searchQuery, '_blank');
+                        } else {
+                            speaker("Please specify what you'd like to search.");
+                        }
+                        matched = true;
+                        break;
+                    }
+                }
+
+                // Handle open website commands
+                for (let keyword of openKeywords) {
+                    if (transcript.includes(keyword)) {
+                        let siteQuery = transcript.split(keyword)[1].trim();
+                        if (!siteQuery.includes("http")) {
+                            siteQuery2 = "https://" + siteQuery + ".com";
+                        }
+                        speaker("Opening " + siteQuery);
+                        window.open(siteQuery2, "_blank");
+                        matched = true;
+                        break;
+                    }
+                }
+
+                // If no matches are found, inform the user
+                if (!matched) {
+                    speaker("I'm sorry, I didn't understand that.");
+                }
+            };
+
+            recognition.onerror = function(event) {
+                console.error("Speech recognition error:", event.error);
+                speaker("I couldn't understand. Please try again.");
+            };
+
+            recognition.onend = function() {
+                console.log("Speech recognition ended.");
+            };
+
+            recognition.start();
+        }
+
+        // Flag to track the first-time greeting
+        let isFirstTime = true;
+
+        // Handle Start Button Click
+        function handleStartButton() {
+            if (isFirstTime) {
+                greetUser(); // Greet the user first time
+                setTimeout(initSpeechRecognition, 5000); // Start listening after greeting
+                isFirstTime = false; // Set flag to false after the first time
+            } else {
+                initSpeechRecognition();
+            }
+        }
+    </script>
+</head>
+<body>
+      <h1>Welcome to Jarvis!</h1>
+    <div class="container">
+             <button onclick="handleStartButton();">Start</button>
+    </div>
+</body>
+</html>
