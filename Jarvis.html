@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Welcome to Jarvis!</h2>
+    <div class="tabs">
+        <button class="tab-button" onclick="openTab('chat')">Chat Mode</button>
+        <button class="tab-button" onclick="openTab('voice')">Voice Mode</button>
+    </div>
+
+    <!-- Chat Mode Section -->
+    <div id="chat" class="tab-content">
+        <div class="container">
+            <div id="chat-container" class="chat-container"></div>
+            <div class="input-container">
+                <input type="text" id="chat-text-input" placeholder="Type a message...">
+                <button onclick="handleChatInput()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Mode Section -->
+    <div id="voice" class="tab-content" style="display: none;">
+        <div class="container">
+            <button id="btn" onclick="handleStartButton();">Start Voice Mode</button>
+            <div id="voice-chat-container" class="chat-container"></div>
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #66fcf1;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* Updated styles for #btn and tab buttons */
+#btn, .tab-button {
+    background-color: #66fcf1; /* Updated background color */
+    color: #0b0c10;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 25px; /* Rounded corners */
+    margin: 0 5px; /* Adding space between buttons */
+}
+
+#btn {
+    background-color: #45a29e; /* Different background color for the start button */
+}
+
+.tab-button:hover, .tab-button.active {
+    background-color: #1f2833; /* Dark background when hovering */
+    color: #66fcf1; /* Text color on hover */
+}
+
+.tab-content {
+    display: none;
+}
+
+/* Container for the content */
+.container {
+    text-align: center;
+    background-color: #1f2833;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Input container for the chat message input field */
+.input-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    width: 80%;
+}
+
+.input-container button {
+    background-color: #66fcf1;
+    color: #0b0c10;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/* Chat container for displaying messages */
+.chat-container {
+    background-color: #1f2833;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 300px;
+    overflow-y: auto;
+    font-size: 1rem;
+}
+
+/* Message styles for user and Jarvis */
+.chat-container div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #0b0c10;
+    font-weight: bold;
+}
+
+.user-msg {
+    background-color: #45a29e;
+}
+
+.jarvis-msg {
+    background-color: #66fcf1;
+}
