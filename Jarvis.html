@@ -188,7 +188,10 @@
         // Handle Start Button Click
         function handleStartButton() {
             if (isFirstTime) {
+                
                 greetUser(); // Greet the user first time
+                                document.getElementById("btn").innerText = "Ask";
+       
                 setTimeout(initSpeechRecognition, 5000); // Start listening after greeting
                 isFirstTime = false; // Set flag to false after the first time
             } else {
@@ -200,7 +203,7 @@
 <body>
       <h1>Welcome to Jarvis!</h1>
     <div class="container">
-             <button onclick="handleStartButton();">Start</button>
+             <button id="btn" onclick="handleStartButton();">Start</button>
     </div>
 </body>
 </html>
