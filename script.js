@@ -11,7 +11,7 @@ function openTab(tabName) {
 // Speech synthesis for Voice Mode only
 function speaker(text) {
     const message = new SpeechSynthesisUtterance(text);
-    message.lang = 'en-US';
+    message.lang = 'en-IN';
     window.speechSynthesis.speak(message);
     addMessageToChat('Jarvis', text, 'voice-chat-container');
 }
@@ -49,7 +49,7 @@ function initSpeechRecognition() {
     }
 
     const recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';
+    recognition.lang = 'en-IN';
 
     recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript.toLowerCase();
@@ -297,10 +297,10 @@ function handleResponse(input, containerId, isVoiceMode) {
         if (input.includes(keyword)) {
             let siteQuery = input.split(keyword)[1]?.trim();
             siteQuery = siteQuery.replace(/\s+/g, '');
-            let siteURL2 = "https://" + siteQuery + ".com";
+            let siteURL = "https://" + siteQuery + ".com";
             addMessageToChat("Jarvis", `Opening ${siteURL}.`, containerId);
             if (isVoiceMode) speaker("Opening " + siteQuery);
-            window.open(siteURL2, "_blank");
+            window.open(siteURL, "_blank");
             return;
         }
     }
