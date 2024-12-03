@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary & Normal Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        p.author {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binary & Normal Converter</h1>
+    <p class="author">Created by Rohit</p>
+    <div class="container">
+        <div id="normalToBinaryDiv">
+            <h3>Convert Normal Text to Binary</h3>
+            <textarea id="normalText" placeholder="Enter normal text here..."></textarea>
+            <button onclick="convertToBinary()">Convert to Binary</button>
+            <div class="output" id="binaryOutput"></div>
+        </div>
+
+        <div id="binaryToNormalDiv" style="display: none;">
+            <h3>Convert Binary to Normal Text</h3>
+            <textarea id="binaryText" placeholder="Enter binary here (space-separated)..."></textarea>
+            <button onclick="convertToText()">Convert to Normal Text</button>
+            <div class="output" id="textOutput"></div>
+        </div>
+
+        <button onclick="toggleConverter()">Switch Converter</button>
+    </div>
+
+    <script>
+        function convertToBinary() {
+            const text = document.getElementById("normalText").value;
+            if (text.trim() === "") {
+                document.getElementById("binaryOutput").innerHTML = '<span class="error">Please enter some text!</span>';
+                return;
+            }
+            const binary = text.split("").map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(" ");
+            document.getElementById("binaryOutput").innerText = "Binary: " + binary;
+        }
+
+        function convertToText() {
+            const binary = document.getElementById("binaryText").value;
+            if (binary.trim() === "") {
+                document.getElementById("textOutput").innerHTML = '<span class="error">Please enter some binary!</span>';
+                return;
+            }
+            try {
+                const text = binary.split(" ").map(bin => {
+                    if (!/^[01]{8}$/.test(bin)) {
+                        throw new Error("Invalid binary");
+                    }
+                    return String.fromCharCode(parseInt(bin, 2));
+                }).join("");
+                document.getElementById("textOutput").innerText = "Text: " + text;
+            } catch (error) {
+                document.getElementById("textOutput").innerHTML = '<span class="error">Invalid binary input. Please enter valid 8-bit binary numbers separated by spaces.</span>';
+            }
+        }
+
+        function toggleConverter() {
+            const normalToBinaryDiv = document.getElementById("normalToBinaryDiv");
+            const binaryToNormalDiv = document.getElementById("binaryToNormalDiv");
+
+            if (normalToBinaryDiv.style.display === "none") {
+                normalToBinaryDiv.style.display = "block";
+                binaryToNormalDiv.style.display = "none";
+            } else {
+                normalToBinaryDiv.style.display = "none";
+                binaryToNormalDiv.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
