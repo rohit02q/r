@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Celebration - Welcome 2025!</title>
+  <style>
+          * {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #2b3d44;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 50px;
+  color: #ff69b4;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 30px;
+  color: #ffcc00;
+}
+
+#logo {
+  background-color: #333;  /* Darker background for better contrast */
+  color: #fff;
+  margin: 0;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 3px solid #ff69b4;
+}
+
+#wait {
+  display: block;
+  padding: 20px;
+}
+
+#timer {
+  font-size: 30px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);  /* Slightly transparent dark background */
+  padding: 20px 40px;
+  border-radius: 20px;
+  margin-top: 30px;
+  font-family: 'Verdana', sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#all {
+  display: none;
+}
+
+#yes {
+  display: block;
+}
+
+#celebration {
+  margin-top: 50px;
+  display: none;
+  padding: 20px;
+  background-color: #4CAF50;
+  border-radius: 10px;
+}
+
+#celebration h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+#celebration p {
+  font-size: 20px;
+}
+
+#ps {
+  width: 80%;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+#login {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #ff6347;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#login:hover {
+  background-color: #d9534f;
+}
+
+#login:active {
+  background-color: #c9302c;
+}
+
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background-color: #ff6347;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: confetti 3s ease-out infinite;
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(500px) rotate(360deg);
+  }
+}
+
+.celebration-message {
+  font-size: 25px;
+  color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #28a745;
+  border-radius: 5px;
+}
+
+.game-section {
+  margin-top: 50px;
+  display: none;
+}
+
+#gameMessage {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f1c40f;
+}
+
+#lst {
+  display: none;
+}
+
+#lst video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+         
+  </style>
+</head>
+<body>
+          <div id="logo">
+                    <h4>Full web is coded by Rohit.</h4>
+          </div>
+    <div id="main">
+<div id="wait">
+  <h1>Welcome to 2025 Celebration!</h1>
+          <p style="color:white">Wait friends</p>
+  <div id="timer">Loading.. please wait...</div>
+</div>
+
+<div id="all" style="display: none;">
+  <div id="yes">
+    <h1>Happy New Year!</h1>
+    <h2>Welcome to 2025!</h2>
+    <input id="ps" type="text" placeholder="Enter your name">
+    <button id="login" onclick="boom()">Submit</button>
+  </div>
+
+<div id="celebration">
+  <h2>🎉 Congratulations!</h2>
+  <h2 id="n"></h2>
+  <p>नया साल, नई उम्मीदें, नई शुरुआत! इसे अपनी मेहनत और हौसले से बेहतरीन बनाएं।</p>
+<p>स्वागत है 2025 का! अपने सपनों को पूरा करने की उड़ान भरें और हर पल का आनंद लें।</p>
+  <div class="celebration-message">
+    <p>Here's your surprise 🎁!</p>
+  </div>
+  <div id="gameMessage" onclick="startGame()">Click here to unlock!</div>
+  
+</div>
+
+<div id="confetti"></div>
+</div>
+  <div id="lst">
+<video controls autoplay loop>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  </div>
+                    </div>
+<script>
+  // Countdown timer
+  let currentDate = new Date();
+  let targetDate = new Date('january 1 , 2025 00:00:00');
+  let timerInterval;
+
+  function countdown() {
+    let now = new Date().getTime();
+    let distance = targetDate - now;
+
+    if (distance <= 0) {
+      document.getElementById("wait").style.display = "none";
+      document.getElementById("all").style.display = "block";
+      clearInterval(timerInterval);
+  }
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  }
+  timerInterval = setInterval(countdown, 1000);
+
+  // Confetti effect
+  function createConfetti() {
+    let numConfetti = 100;
+    for (let i = 0; i < numConfetti; i++) {
+      let particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = Math.random() * 3 + 2 + 's';
+      particle.style.animationDelay = Math.random() * 2 + 's';
+      document.getElementById("confetti").appendChild(particle);
+    }
+  }
+
+  // Boom function after submission
+  function boom() {
+    let name = document.getElementById("ps").value;
+    if (name) {
+      document.getElementById("yes").style.display = "none";
+      document.getElementById("celebration").style.display = "block";
+      document.getElementById('n').innerText = name;
+  
+      createConfetti();
+    } else {
+      alert("Please enter your name!");
+    }
+  }
+
+  // Game section
+  function startGame() {
+    document.getElementById("gameMessage").innerHTML = "Wait your surprise is loading";
+       setTimeout(function () {
+     document.getElementById("lst").style.display = "flex";
+    document.getElementById("all").style.display = "none";
+  
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
