@@ -115,7 +115,21 @@ button{
     var  sum = document.getElementById("sum").value;
    var s= a+ b;
     let un= document.getElementById("un").value;
-  un2= un.toUpperCase();
+    if (un === "Rohit" && pass === "files" && sum==s) {
+     let code = prompt("Enter file code");
+     if(code==1){
+      window.location.href = "https://drive.google.com/drive/folders/1bdDbkP5p8dv38MnfGz_1P2Zwj7MHujhq"; 
+      return;
+     }
+     else if (code==2){
+      window.location.href = "https://drive.google.com/drive/folders/1jmCEkVoEclOv_k01yofb2ejQk-mX1QgG"; 
+      return;
+    }
+     else{
+      alert("File not found!...");
+     }
+    }
+     un2= un.toUpperCase();
   un3= un2.trim();
   length = un3.length;
 let ps = "@" +un3[0]+un3[1]+un3[2]+"0"+length;
