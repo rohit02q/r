@@ -1,301 +1,253 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
-        
- <title>highschool.in</title>
-
-    <style> 
-
-    *{
-
-        padding:0;
-
-        margin: 0;
-
-        color: white;
-
-    }
-
-    #d{
-
-        background-color:black;
-
-        height: 80px;
-
-        margin-top: 0px;
-
-    }
-
-    button{
-
-        background-color: #f08804;
-
-        border: none;
-
-     
-    }
-
-#logo{
-
-    color:#f08804;
-
-    font-size: 30px;
-
-    padding-left:4px;
-
-  margin-right:3px;
-  margin-top:2px;
-}
-
-#a{
-
-  margin-left:30px;
-    margin-right: 60px;
-
-    text-decoration: none;
-
-  font-size:16px;
-}
-
-  input{
-    margin-top:0;
-  }
-  h1,a:hover{
-    color:orange;
-  }
-.area{
-
-    background-color: rgba(0, 0, 0, 0.901);
-
-   height:2000px;
-
-
-   justify-content:center;
-}
-
-#box{
-
-     height: 250px;
-
-     width: 250px;
-
-     background-color: rgba(0, 0, 0,0.4);
-
-     display: inline-block;
-
-    border-radius:4px;
-}
-
-.box1{
-
-    margin-top:5px;
-
-    margin-left:50px;
-
-}
-
-.box2{
-
-    margin-top:5px;
-
-    margin-left:50px;
-
-}
-
-.box3{
-
-    margin-top:5px;
-
-    margin-left:50px;
-
-    margin-right:0px;
-}
-
-footer{
-
-    background-color:rgba(0, 0, 0, 0.92);
-
-    height: 100px;
-
-}
-
-#h1{
-
-    color:white;
-
-    text-align: center;
-
-    font-size: 24px;
-
-    margin-top:2px;
-
-}
-
-#c{
-
-    color: white;
-
-    text-align: center;
-
-    padding-top: 5px;
-
-  font-size:20px;
-}
-
-#me{
-
-    text-align:center;
-
-    padding-right: 2px;
-
-    color: #f08804;
-
-    margin-top: 4px;
-
-   font-size:20px;
-}
-
-#n{
-
-    text-align: center;
-
-    font-size: 37px;
-
-    text-transform: uppercase;
-
-    margin-top: 60px;
-
-    color:rgba(255,255, 215,0.2);;
-    font-weight: 900;
-
-    
-
-}
-
-  #wm{
-    color:rgba(185,235, 215,0.2);
-    text-align: center;
-    font-size:130px;
-    padding-top:90px;
-    text-decoration:underline;
-    font-weight:900;
-  }
-  #last{
-    background-color:rgba(0, 0, 0, 0.8);
-
-    height:200px;
-
-  }
-#abus{
-  text-align:center;
-  color:rgba(0, 0, 0, 0.5);
-
-}
-
-  p{
-    color:grey;
-    margin-left:10px;
-    padding-top:3px;
-  }
-
-html {
-    scroll-behavior: smooth; /* Smooth scroll effect */
-}
-</style>
-
+    <title>highschool.in - Portfolio</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        #d {
+            background-color: black;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #logo {
+            color: #f08804;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        #d input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        #d button {
+            background-color: #f08804;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            color: black;
+            transition: background-color 0.3s ease;
+        }
+
+        #d button:hover {
+            background-color: #e07802;
+        }
+
+        #d a {
+            margin-left: 15px;
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        #d a:hover {
+            color: orange;
+        }
+
+        .area {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .box {
+            height: 250px;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: inline-block;
+            margin: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+        }
+
+        .box h1 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .box marquee {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: bold;
+        }
+
+        #wm {
+            color: rgba(185, 235, 215, 0.2);
+            text-align: center;
+            font-size: 100px;
+            margin-top: 50px;
+            text-decoration: underline;
+            font-weight: 900;
+        }
+
+        #last {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        #abus {
+            font-size: 28px;
+            color: orange;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: grey;
+            margin: 5px 0;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.92);
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            color: white;
+            margin: 5px 0;
+        }
+
+        footer #me {
+            color: #f08804;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                height: 200px;
+                width: 200px;
+            }
+
+            #wm {
+                font-size: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                font-size: 24px;
+            }
+
+            #d input {
+                width: 150px;
+            }
+
+            .box {
+                height: 150px;
+                width: 150px;
+            }
+
+            .box h1 {
+                font-size: 20px;
+            }
+
+            #wm {
+                font-size: 50px;
+            }
+
+            #abus {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
-
         <div id="d">
-
-          
             <a id="logo">highschool.in</a>
-
-            <input style="margin-left:360px; color:black;"placeholder="search highschool.in">
-
-           <button onclick="alert(`Currently Doesn't works`);">search</button>
-</a>
-      <br>
-                      <a id="a" href="#">Our teachers</a>
-
-            <a id="a" href="#">Gallery</a>
-
-            <a id="a"href="https://rohit02q.github.io/Rohit/" >Other page</a>
-
-          <a id="a"href="#last" >About us</a>
-
-      <a id="a"href="My.html" >My project</a>
-
-        
-         
-                    
-         </div>
-
+            <div>
+                <input placeholder="Search highschool.in">
+                <button onclick="alert('Search functionality is not implemented yet!')">Search</button>
+            </div>
+            <nav>
+                <a href="#">Our Teachers</a>
+                <a href="#">Gallery</a>
+                <a href="https://rohit02q.github.io/Rohit/">Other Page</a>
+                <a href="#last">About Us</a>
+                <a href="My.html">My Project</a>
+            </nav>
+        </div>
     </header>
 
-
-
     <div class="area">
-
-        <div class="box1" id="box">
-
-            <h1 id="h1">Class IX</h1>
-
-                        <marquee id="n">Coming Soon</marquee>
-
+        <div class="box fade-in">
+            <h1>Class IX</h1>
+            <marquee>Coming Soon</marquee>
         </div>
 
-        <div class="box2" id="box">
-
-            <h1 id="h1">Class X</h1>
-
-                        <marquee id="n">Coming Soon</marquee>
-
+        <div class="box fade-in">
+            <h1>Class X</h1>
+            <marquee>Coming Soon</marquee>
         </div>
 
-        <div Class="box3" id="box">
-
-            <h1 id="h1">Class XI</h1>
-
-            <marquee id="n">Coming Soon</marquee>
-
+        <div class="box fade-in">
+            <h1>Class XI</h1>
+            <marquee>Coming Soon</marquee>
         </div>
 
-      <p id="wm">ROHIT</p>
-
-
+        <p id="wm">ROHIT</p>
     </div>
 
-<div id="last">
-  <h1 id="abus">About us</h1>
-  <p> Name : Rohit </p>
-  <p> Contact : &#128231rohit021108@gmail.com</p>
-  <p> telegram: @Rohit02q </p>
-  <p> Youtuben: Rohit quizer </p>
-    <p>   </p>
-</div>
+    <div id="last">
+        <h1 id="abus">About Us</h1>
+        <p>Name: Rohit</p>
+        <p>Contact: &#128231; rohit021108@gmail.com</p>
+        <p>Telegram: @Rohit02q</p>
+        <p>YouTube: Rohit Quizer</p>
+    </div>
+
     <footer>
-
-    
-
-     <p id="c">2024 Copyright &#169 highschool.in </p>
-
-     <p id="me"> &#9829 Design by Rohit &#9829 </p>
-
-   
-
-
-
+        <p>&#169; 2024 Copyright highschool.in</p>
+        <p id="me">&#9829; Design by Rohit &#9829;</p>
     </footer>
-
-    
-
 </body>
 
 </html>
