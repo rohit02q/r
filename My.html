@@ -1,58 +1,78 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
 
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>My projects</title>
-  <style>
-  h1{
-    text-align:center;
-    color:red;
-  }
-  a{
-    text-decoration:none;
-    padding:7px;
-    margin-top:7px;
-  }
-  a:hover{
-    text-decoration:red underline;
-    
-  }
-  
-  </style>
+        /* Header Styling */
+        h1 {
+            text-align: center;
+            color: #ff4757;
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+
+        /* Container for Links */
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        /* Individual Link Style */
+        .project-link {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #1e90ff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .project-link:hover {
+            background-color: #ff4757;
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive Design */
+        @media screen and (max-width: 600px) {
+            .project-link {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+        }
+    </style>
 </head>
-<body style="bgcolor:#57b59c">
-  <h1>
-   ®My projects--
-  </h1>
-     <a href="https://rohit02q.github.io/Digclock/">Digital Clock with Stopwatch</a>
-   <br>
-   <a href="https://rohit02q.github.io/TodoApp/">To Do App</a>
-   <br>
-   <a href="https://rohit02q.github.io/BGcolorChanger/">BGcolorChanger</a>
-   <br>
-   <a href="festival.html">New year2025</a>
-  <br>
-   
-   <a href="Jarvis.html">Jarvis AI</a>
-  <br>
-  <a href="login.html">Login page</a>
-  <br>
-   <a href="Binary converter.html">Binary converter</a>
-  <br>
-  <a href="Find HCF.html">Find HCF</a>
-  <br>
-   <a href="Text.html">Hacker Text</a>
-  <br>
-  <a href="Game.html">Number gussing game</a>
-  <br>
-     <a href="Swap number.html">Swap number</a>
-  <br>
-  <a href="Check prime number.html">Check prime number</a>
-  
+<body>
+    <h1>® My Projects</h1>
+    <div class="projects-container">
+        <a href="https://rohit02q.github.io/Digclock/" class="project-link">Digital Clock with Stopwatch</a>
+        <a href="https://rohit02q.github.io/TodoApp/" class="project-link">To Do App</a>
+        <a href="https://rohit02q.github.io/BGcolorChanger/" class="project-link">BG Color Changer</a>
+        <a href="festival.html" class="project-link">New Year 2025</a>
+        <a href="Jarvis.html" class="project-link">Jarvis AI</a>
+        <a href="login.html" class="project-link">Login Page</a>
+        <a href="Binary converter.html" class="project-link">Binary Converter</a>
+        <a href="Find HCF.html" class="project-link">Find HCF</a>
+        <a href="Text.html" class="project-link">Hacker Text</a>
+        <a href="Game.html" class="project-link">Number Guessing Game</a>
+        <a href="Swap number.html" class="project-link">Swap Number</a>
+        <a href="Check prime number.html" class="project-link">Check Prime Number</a>
+    </div>
 </body>
 </html>
