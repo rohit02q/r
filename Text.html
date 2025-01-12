@@ -1,20 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hacker Text</title>
+    <title>Text & Emoji Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #f0f0f0;
-            position: relative;
         }
         h1 {
-            color: Green
-         ;
+            color: green;
         }
         label {
             display: block;
@@ -31,7 +30,7 @@
         button {
             padding: 10px 15px;
             margin-right: 10px;
-            margin-top:4px;
+            margin-top:3px;
             border: none;
             border-radius: 4px;
             background-color: #007BFF;
@@ -52,20 +51,29 @@
         }
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
         }
-        .buttons {
-            margin-top: 20px;
+        #clear{
+      position: fixed;
+            bottom: 20px;
+            right: 45px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        
         }
         #backToTopBtn {
             position: fixed;
-            top: 10px;
-            right: 10px;
+            bottom: 20px;
+            right: 20px;
             padding: 10px 15px;
             background-color: #007BFF;
             color: white;
@@ -77,44 +85,64 @@
         #backToTopBtn:hover {
             background-color: #0056b3;
         }
+        #clear:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+    <button id="clear" onclick="location.reload()">Clear all</button>
     
+
+    <!-- Emoji Generator Section -->
+    <div class="container">
+        <h1>Generate Emojis</h1>
+        <label for="emojiSize">Enter Size:</label>
+        <input type="number" id="emojiSize">
+        <div>
+            <button onclick="generateEmojis()">Generate Emojis</button>
+            <button onclick="copyEmojisToClipboard()">Copy to Clipboard</button>
+        </div>
+        <pre id="emojiOutput"></pre>
+    </div>
+
+    <!-- Zig Zag Text Section -->
     <div class="container">
         <h1>Zig Zag Text</h1>
         <label for="thing">Enter Thing:</label>
         <input type="text" id="thing">
         <label for="term">Enter Term:</label>
         <input type="number" id="term">
-        <div class="buttons">
+        <div>
             <button onclick="processInputs()">Generate Zig Zag Text</button>
             <button onclick="copyToClipboard()">Copy to Clipboard</button>
         </div>
         <pre id="output"></pre>
     </div>
 
+    <!-- Pyramid Text Section -->
     <div class="container">
         <h1>Pyramid Text</h1>
         <label for="pyramidThing">Enter Thing:</label>
         <input type="text" id="pyramidThing">
         <label for="pyramidTerm">Enter Term:</label>
         <input type="number" id="pyramidTerm">
-        <div class="buttons">
+        <div>
             <button onclick="generatePyramidText()">Generate Pyramid Text</button>
             <button onclick="copyPyramidToClipboard()">Copy to Clipboard</button>
         </div>
         <pre id="pyramidOutput"></pre>
     </div>
-    
+
+    <!-- One Line Text Section -->
     <div class="container">
         <h1>One Line Text</h1>
         <label for="oneLineThing">Enter Thing:</label>
         <input type="text" id="oneLineThing">
         <label for="oneLineTerm">Enter Term:</label>
         <input type="number" id="oneLineTerm">
-        <div class="buttons">
+        <div>
             <button onclick="generateOneLineText()">Generate One Line Text</button>
             <button onclick="copyOneLineToClipboard()">Copy to Clipboard</button>
         </div>
@@ -122,81 +150,94 @@
     </div>
 
     <script>
-        function processInputs() {
-            var n = document.getElementById('thing').value;
-            let t = document.getElementById('term').value;
-            let n1 = n;
-            let output = '';
-
-            for (let i = 0; i < t; i++) {
-                for (let k = 0; k < 19; k++) {
-                    output += n + '\n';
-                    n = "   " + n;
-                }
-                n = " " + n1;
-            }
-
-            document.getElementById('output').innerText = output;
+        function getRandomEmoji() {
+            const emojiRanges = [
+                [0x1F600, 0x1F64F],
+                [0x1F300, 0x1F5FF],
+                [0x2600, 0x26FF],
+                [0x1F680, 0x1F6FF]
+            ];
+            const randomRange = emojiRanges[Math.floor(Math.random() * emojiRanges.length)];
+            const randomCodePoint = Math.floor(Math.random() * (randomRange[1] - randomRange[0] + 1)) + randomRange[0];
+            return String.fromCodePoint(randomCodePoint);
         }
 
-        function copyToClipboard() {
-            let output = document.getElementById('output').innerText;
-            navigator.clipboard.writeText(output).then(() => {
-                alert('Output copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+        const emojis = [
+            "😍", "🌹", "🤦", "👽", "🤔", "🎉", "🎊", "😎", "💞", "🤣",
+            "🤩", "😄", "😀", "😃", "🤗", "🥶", "😲", "😯", "🤠", "😇",
+            "☠️", "💀", "👻", "🤖", "❤️", "🔥", "💚", "👍", "👌", "🌺"
+        ];
+
+        function generateEmojis() {
+            const size = document.getElementById("emojiSize").value;
+            let msg = "----";
+            let lineLength = 0;
+
+            for (let i = 0; i < size; i++) {
+                const x = emojis[Math.floor(Math.random() * emojis.length)];
+                const y = getRandomEmoji();
+                const selectedEmoji = Math.random() > 0.5 ? x : y;
+
+                msg += selectedEmoji + "----";
+                lineLength += selectedEmoji.length + 4;
+
+                if (lineLength >= 20) {
+                    msg += "\n";
+                    lineLength = 0;
+                }
+            }
+
+            document.getElementById("emojiOutput").innerText = msg;
+        }
+
+        function processInputs() {
+            const thing = document.getElementById("thing").value;
+            const term = document.getElementById("term").value;
+            let output = "";
+
+            for (let i = 0; i < term; i++) {
+                output += thing.padStart(thing.length + i * 3, " ") + "\n";
+            }
+
+            document.getElementById("output").innerText = output;
         }
 
         function generatePyramidText() {
-            var n = document.getElementById('pyramidThing').value;
-            let t = document.getElementById('pyramidTerm').value;
-            let n1 = n;
-            let output = '';
+            const thing = document.getElementById("pyramidThing").value;
+            const term = document.getElementById("pyramidTerm").value;
+            let output = "";
 
-            for (let i = 0; i < t; i++) {
-                output += n + '\n';
-                n = n + " " + n1;
+            for (let i = 0; i < term; i++) {
+                output += thing.repeat(i + 1) + "\n";
             }
 
-            document.getElementById('pyramidOutput').innerText = output;
-        }
-
-        function copyPyramidToClipboard() {
-            let output = document.getElementById('pyramidOutput').innerText;
-            navigator.clipboard.writeText(output).then(() => {
-                alert('Pyramid output copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+            document.getElementById("pyramidOutput").innerText = output;
         }
 
         function generateOneLineText() {
-            var n = document.getElementById('oneLineThing').value;
-            let t = document.getElementById('oneLineTerm').value;
-            let output = '';
+            const thing = document.getElementById("oneLineThing").value;
+            const term = document.getElementById("oneLineTerm").value;
+            document.getElementById("oneLineOutput").innerText = thing.repeat(term);
+        }
 
-            for (let i = 0; i < t; i++) {
-                output += n + ' ';
-            }
+        function copyToClipboard() {
+            navigator.clipboard.writeText(document.getElementById("output").innerText);
+        }
 
-            document.getElementById('oneLineOutput').innerText = output;
+        function copyPyramidToClipboard() {
+            navigator.clipboard.writeText(document.getElementById("pyramidOutput").innerText);
         }
 
         function copyOneLineToClipboard() {
-            let output = document.getElementById('oneLineOutput').innerText;
-            navigator.clipboard.writeText(output).then(() => {
-                alert('One Line Text copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+            navigator.clipboard.writeText(document.getElementById("oneLineOutput").innerText);
+        }
+
+        function copyEmojisToClipboard() {
+            navigator.clipboard.writeText(document.getElementById("emojiOutput").innerText);
         }
 
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     </script>
 </body>
